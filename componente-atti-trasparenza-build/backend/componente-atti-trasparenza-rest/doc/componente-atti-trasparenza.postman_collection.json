@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "8f1c6ff7-a459-434d-94b6-044659b662d7",
+		"name": "componente-atti-trasparenza",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Atto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "componente-atti-trasparenza/cat/1",
+					"host": [
+						"componente-atti-trasparenza"
+					],
+					"path": [
+						"cat",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "componente-atti-trasparenza/cat/getAll?page=0&size=10",
+					"host": [
+						"componente-atti-trasparenza"
+					],
+					"path": [
+						"cat",
+						"getAll"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Atti",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oggetto\" : \"\",\n\t\"ufficio\" :\"\",\n\t\"competenza\" : \"\",\n\t\"relatore\" : \"\",\n\t\"annoAdozione\" : 2018,\n\t\"sottoTipo\" : \"\",\n\t\"tipiAtto\" : [\n\t\t\t\"DEC\"\n\t\t]\n }"
+				},
+				"url": {
+					"raw": "http://componente-atti-trasparenza/trasparenza-atti-cat/searchAtti?page=0&size=3&sort=oggetto",
+					"protocol": "http",
+					"host": [
+						"componente-atti-trasparenza"
+					],
+					"path": [
+						"trasparenza-atti-cat",
+						"searchAtti"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						},
+						{
+							"key": "sort",
+							"value": "oggetto"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Atto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "componente-atti-trasparenza/cat/download/1",
+					"host": [
+						"componente-atti-trasparenza"
+					],
+					"path": [
+						"cat",
+						"download",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Uffici",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipiAtto\":[\"DD\",\"DEC\",\"DIC\"]}"
+				},
+				"url": {
+					"raw": "http://componente-atti-trasparenza/trasparenza-atti-cat/getUffici",
+					"protocol": "http",
+					"host": [
+						"componente-atti-trasparenza"
+					],
+					"path": [
+						"trasparenza-atti-cat",
+						"getUffici"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Relatori",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipiAtto\":[\"DD\",\"DEC\",\"DIC\",\"DC\"]}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/cat/getRelatori",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"cat",
+						"getRelatori"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stati",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipiAtto\":[\"DD\",\"DEC\",\"DIC\",\"DC\"]}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/cat/getStati",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"cat",
+						"getStati"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Esiti",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipiAtto\":[\"DD\",\"DEC\",\"DIC\",\"DC\"]}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/cat/getEsiti",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"cat",
+						"getEsiti"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessori",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipiAtto\":[\"ODG\",\"INT\"]}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/cat/getAssessori",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"cat",
+						"getAssessori"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Commissioni",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipiAtto\":[\"DD\",\"DEC\",\"DIC\",\"DC\"]}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/cat/getCommissioni",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"cat",
+						"getCommissioni"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sottotipi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "componente-atti-trasparenza/cat/getSottotipi",
+					"host": [
+						"componente-atti-trasparenza"
+					],
+					"path": [
+						"cat",
+						"getSottotipi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Atto",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "cat-user",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "JYOkpnbZ6v",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"attoId\": 501,\n    \"numeroAdozione\": \"1111\",\n    \"dataAdozione\": 1514761200000,\n    \"dataEsecutivita\": 1514934000000,\n    \"dataPubblicazione\": 1515106800000,\n    \"dataScadenza\": 1515106800000,\n    \"dataApprovazione\": 1515106800000,\n    \"dataPresentazione\": 1515106800000,\n    \"ufficio\": \"Direzione Ambiente\",\n    \"relatore\": \"Alberto Brascaleone\",\n    \"oggetto\": \"Oggetto di test DA REST\",\n    \"allegati\": [\n        {\n            \"nome\": \"Pdf di esempio da rest\",\n            \"descrizione\": \"Test PDF\",\n            \"link\": \"http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf\",\n            \"contentType\": \"application/pdf\",\n            \"principale\": true\n        },\n        {\n            \"nome\": \"Allegato 1 da REST\",\n            \"descrizione\": \"Allegato secondario\",\n            \"link\": \"http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf\",\n            \"contentType\": \"application/pdf\",\n            \"principale\": false\n        }\n    ],\n    \"tipoAttoDto\": {\n        \"codice\": \"DIR\"\n    },\n    \"stato\": \"Archiviata\",\n    \"assessore\": \"Marco Bianchi\",\n    \"commissione\": \"Test commissione\",\n    \"esito\": \"Approvata\",\n    \"sottoTipo\" : \"\",\n    \"proponente\" : \"Proponente di test 2\",\n    \"riservato\": false\n    \n}"
+				},
+				"url": {
+					"raw": "componente-atti-trasparenza:8080/cat/putAtto",
+					"host": [
+						"componente-atti-trasparenza"
+					],
+					"port": "8080",
+					"path": [
+						"cat",
+						"putAtto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Atto By Tipo Numero Anno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://componente-atti-trasparenza/trasparenza-atti-cat/getAttoByTipoNumeroAnno?tipo=RIS&numero=00004&anno=2019",
+					"protocol": "http",
+					"host": [
+						"componente-atti-trasparenza"
+					],
+					"path": [
+						"trasparenza-atti-cat",
+						"getAttoByTipoNumeroAnno"
+					],
+					"query": [
+						{
+							"key": "tipo",
+							"value": "RIS"
+						},
+						{
+							"key": "numero",
+							"value": "00004"
+						},
+						{
+							"key": "anno",
+							"value": "2019"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

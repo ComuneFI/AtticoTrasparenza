@@ -1,0 +1,137 @@
+
+<app-loader [isLoading]="isLoading"></app-loader>
+<div>
+
+	<form (submit)="search($event)">
+
+		<div [ngStyle]="{'display': 'block'}">
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="selectAnnoPresentazioneLabel" for="selectAnnoPresentazione" [ngStyle]="{'float': 'left'}"><span translate>presentationDate</span>:</label>
+				<br>
+				<div aria-labelledby="selectAnnoPresentazioneLabel" [ngStyle]="{'display': 'inline-block'}">
+					<select id="selectAnnoPresentazione" #selectAnnoPresentazione title="Anno di presentazione" class="ui-input" name="selectAnnoPresentazione" [(ngModel)]="selectedAnnoAtto">
+						<option translate value="">emptySelectSelection</option>
+						<option *ngFor="let item of anniPresentazione" value="{{item}}">{{item}}</option>
+					</select>
+					<span>/</span>
+					<select id="selectMesePresentazione" #selectMesePresentazione title="Mese di presentazione" class="ui-input">
+						<option translate value="">emptySelectSelection</option>
+						<option *ngFor="let item of mesiPresentazione; let i = index" value="{{(i+1)}}">{{item}}</option>
+					</select>
+				</div>
+			</div>
+			<span>&nbsp;</span>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="selectAnnoApprovazioneLabel" for="selectAnnoApprovazione" [ngStyle]="{'float': 'left'}"><span translate>approvalDate</span>:</label>
+				<br>
+				<div aria-labelledby="selectAnnoApprovazioneLabel" [ngStyle]="{'display': 'inline-block'}">
+					<select id="selectAnnoApprovazione" #selectAnnoApprovazione title="Anno di approvazione" class="ui-input">
+						<option translate value="">emptySelectSelection</option>
+						<option *ngFor="let item of anniApprovazione" value="{{item}}">{{item}}</option>
+					</select>
+					<span>/</span>
+					<select id="selectMeseApprovazione" #selectMeseApprovazione title="Mese di approvazione" class="ui-input">
+						<option translate value="">emptySelectSelection</option>
+						<option *ngFor="let item of mesiApprovazione; let i = index" value="{{(i+1)}}">{{item}}</option>
+					</select>
+				</div>
+			</div>
+			<span>&nbsp;</span>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="selectAnnoScadenzaLabel" for="selectAnnoScadenza" [ngStyle]="{'float': 'left'}"><span translate>expiryDate</span>:</label>
+				<br>
+				<div aria-labelledby="selectAnnoScadenzaLabel" [ngStyle]="{'display': 'inline-block'}">
+					<select id="selectAnnoScadenza" #selectAnnoScadenza title="Anno di scadenza" class="ui-input">
+						<option translate value="">emptySelectSelection</option>
+						<option *ngFor="let item of anniScadenza" value="{{item}}">{{item}}</option>
+					</select>
+					<span>/</span>
+					<select id="selectMeseScadenza" #selectMeseScadenza title="Mese di scadenza" class="ui-input">
+						<option translate value="">emptySelectSelection</option>
+						<option *ngFor="let item of mesiScadenza; let i = index" value="{{(i+1)}}">{{item}}</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+		<br>
+
+		<div [ngStyle]="{'display': 'inline-block'}">
+			<!-- <div [ngStyle]="{'display': 'inline-block'}">
+				<label for="selectSottotipi" [ngStyle]="{'float': 'left'}"><span translate>subtypes</span>:</label><br>
+				<select #selectSottotipi>
+					<option translate value="">emptySelectSelection</option>
+					<option *ngFor="let item of sottotipi" value="{{item}}">{{item}}</option>
+				</select>
+			</div> -->
+
+      <div [ngStyle]="{'display': 'inline-block'}">
+				<label id="selectTipoAttoLabel" for="selectTipoAtto" [ngStyle]="{'float': 'left'}"><span translate>actType</span>:</label><br>
+				<select aria-labelledby="selectTipoAttoLabel" id="selectTipoAtto"  #selectTipoAtto title="Tipo di atto" class="ui-input" name="selectTipoAtto" [(ngModel)]="selectedTipoAtto">
+					<option translate value="">emptySelectSelection</option>
+					<option *ngFor="let item of tipoAtti" value="{{item?.codice}}">{{item?.descrizione}}</option>
+				</select>
+			</div>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="selectStatiLabel" for="selectStati" [ngStyle]="{'float': 'left'}"><span translate>stats</span>:</label><br>
+				<select aria-labelledby="selectStatiLabel"id="selectStati" #selectStati title="Stato atto" class="ui-input">
+					<option translate value="">emptySelectSelection</option>
+					<option *ngFor="let item of stati" value="{{item}}">{{item}}</option>
+				</select>
+			</div>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="selectEsitiLabel" for="selectEsiti" [ngStyle]="{'float': 'left'}"><span translate>outcomes</span>:</label><br>
+				<select aria-labelledby="selectEsitiLabel"id="selectEsiti" #selectEsiti title="Esito" class="ui-input">
+					<option translate value="">emptySelectSelection</option>
+					<option *ngFor="let item of esiti" value="{{item}}">{{item}}</option>
+				</select>
+			</div>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="selectAssessoriLabel" for="selectAssessori" [ngStyle]="{'float': 'left'}"><span translate>assessors</span>:</label><br>
+				<select aria-labelledby="selectAssessoriLabel" id="selectAssessori" #selectAssessori title="Assessore" class="ui-input">
+					<option translate value="">emptySelectSelection</option>
+					<option *ngFor="let item of assessori" value="{{item}}">{{item}}</option>
+				</select>
+			</div>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="selectCommissioniLabel" for="selectCommissioni" [ngStyle]="{'float': 'left'}"><span translate>commissions</span>:</label><br>
+				<select aria-labelledby="selectCommissioniLabel" id="selectCommissioni" #selectCommissioni title="Commissione" class="ui-input">
+					<option translate value="">emptySelectSelection</option>
+					<option *ngFor="let item of commissioni" value="{{item}}">{{item}}</option>
+				</select>
+			</div>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="inputNumeroAdozioneLabel" for="inputNumeroAdozione" [ngStyle]="{'float': 'left'}"><span translate>number</span>:</label><br>
+				<input aria-labelledby="inputNumeroAdozioneLabel" id="inputNumeroAdozione" #inputNumeroAdozione title="Numero di Adozione" class="ui-input" type="number" name="inputNumeroAdozione" [(ngModel)]="selectedNumeroAtto" />
+			</div>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="inputProponenteLabel" for="inputProponente" [ngStyle]="{'float': 'left'}"><span translate>proponent</span>:</label><br>
+				<input aria-labelledby="inputProponenteLabel" id="inputProponente" #inputProponente title="Proponente" class="ui-input" type="text" />
+			</div>
+
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<label id="inputOggettoLabel" for="inputOggetto" [ngStyle]="{'float': 'left'}"><span translate>inputSubject</span>:</label><br>
+				<input aria-labelledby="inputOggettoLabel" id="inputOggetto" #inputOggetto title="Oggetto" class="ui-input" type="text" [ngStyle]="{'width': '220px'}" />
+				<input #notLoadIniziale id="notLoadIniziale" type="hidden" value="ok"/>
+			</div>
+		</div>
+
+		<button #searchBtn type="submit" class="btn btn-danger" [ngClass]="['bs-square-btn']" (click)="search($event)" translate><span class="fas fa-search"></span>&nbsp;search</button>
+		<button #resetBtn type="button" class="btn btn-secondary" [ngClass]="['bs-square-btn']" (click)="reset($event)" translate><span class="fas fa-undo"></span>&nbsp;reset</button>
+	</form>
+
+</div>
+
+<br>
+
+<app-tabella-ac #tabellaAc></app-tabella-ac>

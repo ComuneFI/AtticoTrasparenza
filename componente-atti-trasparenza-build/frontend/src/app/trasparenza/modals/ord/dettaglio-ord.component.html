@@ -1,0 +1,163 @@
+<div [ngClass]="{'robots-nocontent': content['dataFinePubblicazione'] && content['dataFinePubblicazione'] > 0 }">
+
+  <span [outerHTML]="googleOffVar | safeHtml "></span>
+
+  <div class="row">
+		<div class="col-md-3"><strong translate>adoptionNumber</strong></div>
+		<div class="col-md-9">{{content?.numeroAdozione}}</div>
+  </div>
+
+  <div class="row">
+		<div class="col-md-3"><strong translate>adoptionDate</strong></div>
+		<div class="col-md-9">{{content?.dataAdozione | date:translateService.instant('patternDate')}}</div>
+  </div>
+
+  <div class="row">
+		<div *ngIf="content && content.dataFinePubblicazione" class="col-md-3"><strong>{{translateService.instant('columnLabels')["publicationEndDate"]}}</strong></div>
+		<div *ngIf="content && content.dataFinePubblicazione" class="col-md-9">{{content?.dataFinePubblicazione | date:translateService.instant('patternDate')}}</div>
+  </div>
+
+  <div class="row">
+		<div class="col-md-3"><strong>{{translateService.instant('columnLabels')["office"]}}</strong></div>
+		<div class="col-md-9">{{content?.ufficio}}</div>
+  </div>
+
+  <div class="row">
+		<div class="col-md-3"><strong>{{translateService.instant('columnLabels')["subject"]}}</strong></div>
+		<div class="col-md-9">{{content?.oggetto}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"><strong>{{translateService.instant('columnLabels')["stateCancel"]}}</strong></div>
+		<div class="col-md-9">{{content?.statoAnnullamento}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" *ngIf="!utils.isEmpty(content?.statoAnnullamento)"><strong>{{translateService.instant('columnLabels')["actCancel"]}}</strong></div>
+		<div class="col-md-9" *ngIf="!utils.isEmpty(content?.statoAnnullamento)">
+      <div><a href="?tipo={{content?.tipoAttoAnnullamento}}&numero={{content?.numeroAttoAnnullamento}}&anno={{content?.dataAttoAnnullamento | date:'yyyy'}}">
+        <span *ngIf="!utils.isEmpty(content?.tipoAttoAnnullamento)" [ngStyle]="{'float' : 'left'}">{{content?.tipoAttoAnnullamento}}</span>
+        <span *ngIf="!utils.isEmpty(content?.numeroAttoAnnullamento)" [ngStyle]="{'float' : 'left'}">,&nbsp;N. {{content?.numeroAttoAnnullamento}}</span>
+        <span *ngIf="!utils.isEmpty(content?.dataAttoAnnullamento)" [ngStyle]="{'float' : 'left'}">&nbsp;del&nbsp;{{content?.dataAttoAnnullamento | date:translateService.instant('patternDate')}}</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3" *ngIf="!utils.isEmpty(content?.tipoAttoCollegamento)"><strong>{{translateService.instant('columnLabels')["actCancel2"]}}</strong></div>
+		<div class="col-md-9" *ngIf="!utils.isEmpty(content?.tipoAttoCollegamento)">
+      <div><a href="?tipo={{content?.tipoAttoCollegamento}}&numero={{content?.numeroAttoCollegamento}}&anno={{content?.dataAttoCollegamento | date:'yyyy'}}">
+        <span *ngIf="!utils.isEmpty(content?.tipoAttoCollegamento)" [ngStyle]="{'float' : 'left'}">{{content?.tipoAttoCollegamento}}</span>
+        <span *ngIf="!utils.isEmpty(content?.numeroAttoCollegamento)" [ngStyle]="{'float' : 'left'}">,&nbsp;N. {{content?.numeroAttoCollegamento}}</span>
+        <span *ngIf="!utils.isEmpty(content?.dataAttoCollegamento)" [ngStyle]="{'float' : 'left'}">&nbsp;del&nbsp;{{content?.dataAttoCollegamento | date:translateService.instant('patternDate')}}</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"><strong>{{translateService.instant('notes')}}</strong></div>
+    <div class="col-md-9">
+      <div *ngIf="content?.riservato"><span>{{translateService.instant('reservedNote')}}</span></div>
+      <div *ngIf="content?.scaduto"><span>{{translateService.instant('expiredNote', {inizio : (content.dataPubblicazione | date:translateService.instant('patternDate')), fine : (content.dataFinePubblicazione | date:translateService.instant('patternDate'))})}}</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+		<div class="col-md-3"><strong>{{translateService.instant('columnLabels')["act"]}}</strong></div>
+		<div class="col-md-9">
+			 <a *ngIf="content['atto']?.link" href="{{content['atto']?.link}}" target="_blank" title="{{content['atto']?.nome}}" [attr.rel]="content['dataFinePubblicazione'] && content['dataFinePubblicazione'] > 0 ? 'nofollow' : null">
+         <!--<img src="./assets/attach.png" alt="{{content['atto']?.nome}}" title="{{content['atto']?.nome}}" height="32" width="32">-->
+         <span *ngIf="!content['atto']?.titolo">{{content['atto']?.nome}}</span>
+         <span *ngIf="content['atto']?.titolo">{{content['atto']?.titolo}}</span>
+			 </a>
+		</div>
+  </div>
+
+  <!--
+    <div class="row">
+  		<div class="col-md-3"><strong>{{translateService.instant('columnLabels')["attachments"]}}</strong></div>
+  		<div class="col-md-9">
+  			 <a *ngFor="let attach of content['allegati']" href="{{attach.link}}" target="_blank" [attr.rel]="content['dataFinePubblicazione'] && content['dataFinePubblicazione'] > 0 ? 'nofollow' : null">
+  			 	<img src="./assets/attach.png" alt="{{attach.nome}}" title="{{attach.nome}}" height="32" width="32">
+  			 </a>
+  		</div>
+    </div>
+  -->
+  <div class="row">
+    <div class="col-md-12"><strong>{{translateService.instant('columnLabels')["attachments"]}}</strong></div>
+  </div>
+  <div class="row">
+  <div class="col-md-12">
+    <ol type="1">
+      <li *ngFor="let attach of content['allegati']">
+         <a *ngIf="!attach?.riservato" href="{{attach.link}}" target="_blank" title="{{attach.nome}}" [attr.rel]="content['dataFinePubblicazione'] && content['dataFinePubblicazione'] > 0 ? 'nofollow' : null">
+          <span *ngIf="!attach?.titolo">{{attach?.nome}}</span>
+          <span *ngIf="attach?.titolo">{{attach?.titolo}}</span>
+         </a>
+         <span *ngIf="attach?.riservato" title="{{attach.nome}}">
+          <span *ngIf="!attach?.titolo">{{attach?.nome}} (<b>RISERVATO</b>)</span>
+          <span *ngIf="attach?.titolo">{{attach?.titolo}} (<b>RISERVATO</b>)</span>
+         </span>
+      </li>
+    </ol>
+  </div>
+</div>
+
+  <div class="row">
+		<div class="col-md-3"><strong>{{translateService.instant('columnLabels')["opinions"]}}</strong></div>
+		<div class="col-md-9">
+			<table class="table" *ngIf="content?.pareri">
+			  <thead>
+			    <tr>
+			      <th scope="col">{{translateService.instant('columnLabels')["opinionsColumns"]["name"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["opinionsColumns"]["text"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["opinionsColumns"]["sendDate"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["opinionsColumns"]["expiryDate"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["opinionsColumns"]["opinionDate"]}}</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr *ngFor="let item of content?.pareri">
+			    	<td>{{item.nome}}</td>
+			    	<td>{{item.testo}}</td>
+			    	<td>{{item.dataInvio | date:translateService.instant('patternDate')}}</td>
+			    	<td>{{item.dataScadenza | date:translateService.instant('patternDate')}}</td>
+			    	<td>{{item.dataParere | date:translateService.instant('patternDate')}}</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+  </div>
+
+  <div class="row">
+		<div class="col-md-3"><strong>{{translateService.instant('columnLabels')["voting"]}}</strong></div>
+		<div class="col-md-9">
+			<table class="table" *ngIf="content?.votazioni && !utils.isEmpty(content?.votazioni)">
+			  <thead>
+			    <tr>
+			      <th scope="col">{{translateService.instant('columnLabels')["votingColumns"]["numAbstained"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["votingColumns"]["namesAbstained"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["votingColumns"]["numNpv"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["votingColumns"]["namesNpv"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["votingColumns"]["numOpposed"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["votingColumns"]["numFavorable"]}}</th>
+			      <th scope="col">{{translateService.instant('columnLabels')["votingColumns"]["nameFavorable"]}}</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			    	<td>{{content?.votazioni?.numAstenuti}}</td>
+			    	<td>{{content?.votazioni?.nomiAstenuti}}</td>
+			    	<td>{{content?.votazioni?.numNpv}}</td>
+			    	<td>{{content?.votazioni?.nomiNpv}}</td>
+			    	<td>{{content?.votazioni?.numContrari}}</td>
+			    	<td>{{content?.votazioni?.numFavorevoli}}</td>
+			    	<td>{{content?.votazioni?.nomiFavorevoli}}</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+  </div>
+
+  <span [outerHTML]="googleOnVar | safeHtml "></span>
+</div>

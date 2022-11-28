@@ -1,0 +1,9 @@
+<app-cdf-header></app-cdf-header>
+<main id="main-content">
+  <div id="fake-padding-header"></div>
+  <div id="fake-padding-header-menu" *ngIf="isMenuEnabled()"></div>
+  <router-outlet></router-outlet>
+</main>
+<app-cdf-footer></app-cdf-footer>
+
+<app-scrolltop></app-scrolltop>

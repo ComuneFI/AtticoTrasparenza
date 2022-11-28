@@ -1,0 +1,15 @@
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"><span translate>detail</span></h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss(translateService.instant('close'))">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+      <app-dettaglio-del [content]="content"></app-dettaglio-del>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close(translateService.instant('close'))"><span translate>close</span></button>
+    </div>
+  </div>

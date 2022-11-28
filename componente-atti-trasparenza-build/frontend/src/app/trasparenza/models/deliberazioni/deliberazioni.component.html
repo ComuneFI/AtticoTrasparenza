@@ -1,0 +1,36 @@
+<div class=""><!--container-fluid-->
+
+  <div class="breadcrumbs">
+    <div class="" *ngIf="breadcrumbsType === '' || breadcrumbsType === breadcrumbsTypes?.provvedimentiOrganiIndirizzoPolitico">
+        <div class="col-sm-12">
+            <h1 id="system-breadcrumb" style="color:#c30c26;">Deliberazioni</h1>
+            <a href="{{getComuneBaseUrl()}}" title="Go to /" rel="nofollow"><span>Home</span></a>
+            <span class="separator">&gt;</span>
+            <a href="{{getComuneBaseUrl()}}/pagina/amministrazione-trasparente" title="Go to /pagina/amministrazione-trasparente" rel="nofollow"><span>Amministrazione trasparente</span></a>
+            <span class="separator">&gt;</span>
+            <a href="{{getComuneBaseUrl()}}/pagina/amministrazione-trasparente/provvedimenti" title="Go to /pagina/amministrazione-trasparente/provvedimenti" rel="nofollow"><span>Provvedimenti</span></a>
+            <span class="separator">&gt;</span>
+            <a href="{{getComuneBaseUrl()}}/pagina/amministrazione-trasparente-provvedimenti/provvedimenti-organi-indirizzo-politico" title="Go to /pagina/amministrazione-trasparente-provvedimenti/provvedimenti-organi-indirizzo-politico" rel="nofollow"><span>Provvedimenti organi indirizzo politico</span></a>
+            <span class="separator">&gt;</span>
+            <span class="current" translate>deliberations</span>
+        </div>
+    </div>
+
+    <div class="" *ngIf="breadcrumbsType === breadcrumbsTypes?.lavori">
+        <div class="col-sm-12">
+            <h1 id="system-breadcrumb" style="color:#c30c26;">Deliberazioni</h1>
+            <a href="{{getComuneBaseUrl()}}" title="Go to /" rel="nofollow"><span>Home</span></a>
+            <span class="separator">&gt;</span>
+            <a href="{{getComuneBaseUrl()}}/pagina/consiglio-comunale" title="Go to /pagina/consiglio-comunale" rel="nofollow"><span>Consiglio comunale</span></a>
+            <span class="separator">&gt;</span>
+            <a href="{{getComuneBaseUrl()}}/pagina/consiglio-comunale/lavori" title="Go to /pagina/consiglio-comunale/lavori" rel="nofollow"><span>Lavori</span></a>
+            <span class="separator">&gt;</span>
+            <span class="current" translate>deliberations</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="jumbotron text-center">
+	   <app-cerca-del></app-cerca-del>
+  </div>
+</div>

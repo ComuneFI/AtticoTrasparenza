@@ -1,0 +1,79 @@
+
+<app-loader [isLoading]="isLoading"></app-loader>
+<div>
+
+	<form (submit)="search($event)">
+
+		<div [ngStyle]="{'display': 'inline-block'}">
+			<label for="inputNumeroAdozione" [ngStyle]="{'float': 'left'}"><span>{{translateService.instant('columnLabels')["adoptionNumber"]}}</span>:</label><br>
+      <input #inputNumeroAdozione id="inputNumeroAdozione" class="ui-input" type="number" name="inputNumeroAdozione" [(ngModel)]="selectedNumeroAtto"
+                             (keyup)="inputNumeroAdozioneOnChange($event)"
+													   (paste)="inputNumeroAdozioneOnChange($event)"
+													   (change)="inputNumeroAdozioneOnChange($event)"
+			 />
+		</div>
+
+		<div [ngStyle]="{'display': 'inline-block'}">
+			<label for="selectAnnoAdozione" [ngStyle]="{'float': 'left'}"><span>{{translateService.instant('columnLabels')["adoptionYear"]}}</span>:</label>
+			<br>
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<select id="selectAnnoAdozione" title="Anno di adozione" #selectAnnoAdozione class="ui-input" (change)="selectAnnoAdozioneOnChange($event)" name="selectAnnoAdozione" [(ngModel)]="selectedAnnoAtto">
+					<option translate value="">emptySelectSelection</option>
+					<option *ngFor="let item of anniAdozione" value="{{item}}">{{item}}</option>
+				</select>
+			</div>
+		</div>
+		<div [ngStyle]="{'display': 'inline-block'}">
+			<label id="selectMeseAdozione" for="selectMeseAdozione" [ngStyle]="{'float': 'left'}"><span>{{translateService.instant('columnLabels')["adoptionMonth"]}}</span>:</label>
+			<br>
+			<div [ngStyle]="{'display': 'inline-block'}">
+				<select id="selectMeseAdozione" title="Mese di adozione" #selectMeseAdozione class="ui-input" (change)="selectMeseAdozioneOnChange($event)">
+					<option translate value="">emptySelectSelection</option>
+					<option *ngFor="let item of mesiAdozione; let i = index" value="{{(i+1)}}">{{item}}</option>
+				</select>
+			</div>
+		</div>
+		<span>&nbsp;</span>
+
+		<div [ngStyle]="{'display': 'inline-block'}">
+			<label for="selectUffici" [ngStyle]="{'float': 'left'}"><span translate>office</span>:</label><br>
+			<select id="selectUffici" #selectUffici class="ui-input" (change)="selectUfficiOnChange($event)">
+				<option translate value="">emptySelectSelection</option>
+				<option *ngFor="let item of uffici" value="{{item}}">{{item}}</option>
+			</select>
+		</div>
+
+		<div [ngStyle]="{'display': 'inline-block'}">
+			<label for="selectRelatori" [ngStyle]="{'float': 'left'}"><span translate>speaker</span>:</label><br>
+			<select id="selectRelatori" #selectRelatori class="ui-input" (change)="selectRelatoriOnChange($event)">
+				<option translate value="">emptySelectSelection</option>
+				<option *ngFor="let item of relatori" value="{{item}}">{{item}}</option>
+			</select>
+		</div>
+
+		<div [ngStyle]="{'display': 'inline-block'}">
+			<label for="selectCompetenza" [ngStyle]="{'float': 'left'}"><span translate>competence</span>:</label><br>
+			<select id="selectCompetenza" #selectCompetenza class="ui-input" (change)="selectCompetenzaOnChange($event)" name="selectTipoAtto" [(ngModel)]="selectedTipoAtto">
+				<option translate value="">emptySelectSelection</option>
+				<option translate value="{{environment.atto.tipo.delibereGiunta.codice}}">junta</option><!-- {{translateService.instant('junta')}} -->
+				<option translate value="{{environment.atto.tipo.delibereConsiglio.codice}}">council</option>
+			</select>
+		</div>
+
+		<div [ngStyle]="{'display': 'inline-block'}">
+			<label for="inputOggetto" [ngStyle]="{'float': 'left'}"><span translate>inputSubject</span>:</label><br>
+			<input id="inputOggetto" #inputOggetto class="ui-input" type="text" [ngStyle]="{'width': '220px'}"  (keyup)="inputOggettoOnChange($event)"
+																			 (paste)="inputOggettoOnChange($event)"
+			 />
+			 <input #notLoadIniziale id="notLoadIniziale" type="hidden" value="ok"/>
+		</div>
+
+		<button #searchBtn type="submit" class="btn btn-danger" [ngClass]="['bs-square-btn']" (click)="search($event)" translate><span class="fas fa-search"></span>&nbsp;search</button>
+		<button #resetBtn type="button" class="btn btn-secondary" [ngClass]="['bs-square-btn']" (click)="reset($event)" translate><span class="fas fa-undo"></span>&nbsp;reset</button>
+	</form>
+
+</div>
+
+<br>
+
+<app-tabella-del #tabellaDel></app-tabella-del>

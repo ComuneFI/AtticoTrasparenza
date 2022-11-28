@@ -1,0 +1,35 @@
+.scrollto-top {
+  background-image: url("assets/icons/scroll-to-top.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 48px 48px;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 62px;
+  right: 16px;
+  display: none !important;
+  width: 48px;
+  height: 48px;
+  background-color: #C30C26;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  opacity: 0;
+  -webkit-transition: 250ms opacity ease-in-out, 250ms -webkit-transform ease-in-out, 250ms -webkit-box-shadow ease-in-out;
+  transition: 250ms opacity ease-in-out, 250ms -webkit-transform ease-in-out, 250ms -webkit-box-shadow ease-in-out;
+  transition: 250ms transform ease-in-out, 250ms box-shadow ease-in-out, 250ms opacity ease-in-out;
+  transition: 250ms transform ease-in-out, 250ms box-shadow ease-in-out, 250ms opacity ease-in-out, 250ms -webkit-transform ease-in-out, 250ms -webkit-box-shadow ease-in-out;
+  will-change: transform, opacity, box-shadow; }
+  @media screen and (min-width: 1280px) {
+    .scrollto-top {
+      bottom: 32px;
+      right: 32px; } }
+  .scrollto-top.active {
+    display: block !important;
+    opacity: .8;
+    -webkit-transform: none;
+            transform: none; }
+    .scrollto-top.active:hover {
+      opacity: 1;
+      -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+              box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }

@@ -1,0 +1,21 @@
+<!-- <table>
+  <tr>
+    <th *ngFor="let col of columns">
+      {{col}}
+    </th>
+  </tr>
+  <tr *ngFor="let char of characters | async; let i = index" [attr.data-index]="i">
+    <td *ngFor="let col of columns">
+      {{i}}: {{char[col]}}
+    </td>
+  </tr>
+</table> -->
+
+<table style="margin-left:auto; margin-right:auto;">
+  <tr>
+    <th *ngFor="let c of columns">{{c}}</th>
+  </tr>
+  <tr *ngFor="let ch of characters | async" app-table-row [character]="ch" [columns]="columns" (clickLn)="listener($event)"><!-- app-table-row [character]="ch" [columns]="columns" -->
+  	<!-- <app-table-row [character]="ch" [columns]="columns"></app-table-row> -->
+  </tr>
+</table>

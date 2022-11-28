@@ -1,0 +1,39 @@
+<td *ngFor="let col of columns" tabindex="0">
+	<div *ngIf="col == 'atto'; then attoBlock else elseBlock"></div>
+
+	<ng-template #attoBlock>
+		 <a *ngIf="json_data[col]?.link" href="{{json_data[col].link}}" target="_blank" [attr.rel]="json_data['dataFinePubblicazione'] && json_data['dataFinePubblicazione'] > 0 ? 'nofollow' : null">
+		 	<img src="./assets/attach.png" alt="{{json_data[col].nome}}" title="{{json_data[col].nome}}" height="32" width="32">
+		 </a>
+	</ng-template>
+
+	<ng-template #elseBlock>
+		<div *ngIf="col == 'allegati'; then allegatiBlock else modalBlock"></div>
+	</ng-template>
+
+  <ng-template #modalBlock>
+		<div *ngIf="col == 'dettaglio'; then dettaglioBlock else normalBlock"></div>
+	</ng-template>
+
+	<ng-template #allegatiBlock>
+		 <a *ngFor="let attach of json_data[col]" href="{{attach.link}}" target="_blank" [attr.rel]="json_data['dataFinePubblicazione'] && json_data['dataFinePubblicazione'] > 0 ? 'nofollow' : null">
+		 	<img src="./assets/attach.png" alt="{{attach.nome}}" title="{{attach.nome}}" height="32" width="32">
+		 </a>
+	</ng-template>
+
+	<ng-template #normalBlock>
+		<div *ngIf="col.toString().toLowerCase().indexOf('data') >= 0; then dateBlock else stringBlock"></div>
+	</ng-template>
+
+	<ng-template #dateBlock>
+		{{json_data[col] | date:translateService.instant('patternDate')}}
+	</ng-template>
+
+	<ng-template #stringBlock>
+		{{utils.printWithMaxCharacterLimit(json_data[col])}}
+	</ng-template>
+
+  	<ng-template #dettaglioBlock>
+		<button class="btn btn-outline-dark" (click)="open()">Dettaglio</button>
+	</ng-template>
+</td>

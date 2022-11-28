@@ -1,0 +1,15 @@
+<app-loader [isLoading]="isLoading"></app-loader>
+<div #errorMessage [ngClass]="['error-msg-container']" [ngStyle]="{'display': 'none'}"><span [ngClass]="['error-msg']"></span></div>
+<div id="resultsWrapperDiv" [ngStyle]="{'overflow-x': 'auto'}">
+	<table style="margin-left:auto; margin-right:auto;" datatable class="dt-custom row-border hover responsive" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+		<thead>
+		  <tr>
+		    <th tabindex="0" *ngFor="let c of columnLabels">{{c}}</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr *ngFor="let ch of json_list" app-tabella-del-row [json_data]="ch" [columns]="columns">
+		  </tr>
+		</tbody>
+	</table>
+</div>

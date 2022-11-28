@@ -1,0 +1,19 @@
+.error-msg-container {
+	border: 4px dashed black;
+	text-align: center;
+	background-color: #fffddb;
+	padding: 12px;
+	margin-bottom: 22px;
+}
+
+.error-msg {
+	color: red;
+	font-weight: 900;
+}
+
+.dt-custom > tbody > tr:nth-of-type(2n):hover, .dt-custom > tbody > tr:nth-of-type(2n+1):hover {
+    background-color: #dedede;
+}
+.dt-custom > tbody > tr:nth-of-type(2n+1) {
+    background-color: #efefef;
+}
