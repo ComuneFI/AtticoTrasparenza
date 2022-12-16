@@ -1,0 +1,104 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+categories:
+  - document-management
+dependsOn:
+  open:
+    - name: openJDK
+      optional: false
+      version: '1.8'
+      versionMax: ''
+      versionMin: ''
+    - name: Spring Framework
+      optional: false
+      version: 4.3.14
+      versionMax: ''
+      versionMin: ''
+    - name: angular-devkit
+      optional: false
+      version: 0.6.8
+      versionMax: ''
+      versionMin: ''
+    - name: angular/cli
+      optional: false
+      version: 6.0.8
+      versionMax: ''
+      versionMin: ''
+    - name: Percona XtraDB Cluster
+      optional: false
+      version: ''
+      versionMax: ''
+      versionMin: ''
+description:
+  it:
+    features:
+      - |-
+        Interfaccia per la consultazione e ricerca degli atti pubblicati per
+        amministrazione trasparente
+      - Servizi REST per la pubblicazione di atti in trasparenza
+    genericName: Componente Atti Trasparenza
+    longDescription: |
+      Il sistema della Componente Atti Trasparenza di Attico supporta in 
+      maniera efficace, efficiente e nel rispetto della normativa vigente, le 
+      attività relative alla gestione degli atti amministrativi in ambito di 
+      amministrazione trasparente (L. 69 / 2009 L. 213/2012 Dlgs 33/2013 e 
+      L.190/2012). 
+
+
+      La Componente offre:
+
+
+      - Interfacce utente per la consultazione degli atti pubblicati dall'ente,
+      tramite appositi filtri di ricerca;
+
+      - servizi di tipo REST che permettono la pubblicazione degli atti
+      amministrativi in maniera automatica da sistemi esterni
+
+       
+    shortDescription: |-
+      Componente Atti Trasparenza di Attico offre servizi per la gestione della
+      pubblicazione degli atti amministrativi
+developmentStatus: stable
+intendedAudience:
+  countries:
+    - it
+  scope:
+    - government
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: false
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: false
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
+legal:
+  license: GPL-3.0-or-later
+localisation:
+  availableLanguages:
+    - it
+  localisationReady: true
+maintenance:
+  contacts:
+    - name: Comune di Firenze
+  contractors:
+    - name: Links Management And Technology S.p.A.
+      until: '2022-12-31'
+      website: 'https://www.linksmt.it'
+  type: contract
+name: ATTICO - Componente Atti Trasparenza del Comune di Firenze
+platforms:
+  - web
+releaseDate: '2022-11-28'
+softwareType: standalone/web
+softwareVersion: 2.43.3
+url: 'https://github.com/ComuneFI/AtticoTrasparenza'
+usedBy:
+  - Comune di Firenze
